@@ -1,0 +1,30 @@
+1:User InterfaceAdd commentMore actions
+
+A clean and responsive UI with a title and description.
+
+Buttons for turning Light 1 and Fan 1 ON and OFF.
+
+Visual feedback with green (ON) and red (OFF) buttons.
+
+2:Blynk Integration
+
+Uses Blynk Cloud API to send commands remotely.
+
+Virtual Pins (V0 & V1) control the devices.
+
+Sends an HTTP request to the Blynk server when a button is clicked.
+
+How It Works:
+
+When the user clicks a button, the toggleDevice() function makes a request to Blynk’s cloud API.
+
+This request updates the virtual pin state (1 for ON, 0 for OFF).
+
+The ESP8266 microcontroller (running Blynk firmware) receives the update and toggles the corresponding relay.
+
+Customization:
+Replace # Your Auth token with your Blynk authentication token.
+
+Add more devices by assigning new virtual pins (V2, V3, etc.).
+
+Modify the CSS styles for a more personalized look.
