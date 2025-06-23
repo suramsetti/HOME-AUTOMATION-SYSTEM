@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Home Automation Control</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 50px;
+            background-color: #f4f4f4;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            display: inline-block;
+        }
+        .button {
+            padding: 15px 30px;
+            font-size: 20px;
+            margin: 10px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+        .on {
+            background-color: green;
+            color: white;
+        }
+        .off {
+            background-color: red;
+            color: white;
+        }
+        .button:hover {
+            opacity: 0.8;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Home Automation System</h1>
+        <p>Control your home appliances remotely</p>
+        <button class="button on" onclick="toggleDevice('V0', '1')">Turn Light 1 ON</button>
+        <button class="button off" onclick="toggleDevice('V0', '0')">Turn Light 1 OFF</button>
+        <br>
+        <button class="button on" onclick="toggleDevice('V1', '1')">Turn Fan 1 ON</button>
+        <button class="button off" onclick="toggleDevice('V1', '0')">Turn Fan 1 OFF</button>
+    </div>
+
+    <script>
+        const BLYNK_AUTH_TOKEN = "# Your Auth token";
+
+        function toggleDevice(pin, value) {
+            fetch(`https://blynk.cloud/external/api/update?token=${BLYNK_AUTH_TOKEN}&${pin}=${value}`)
+                .then(response => response.json())
+                .then(data => console.log(data))
+                .catch(error => console.error('Error:', error));
+        }
+    </script>
+</body>
+</html>
